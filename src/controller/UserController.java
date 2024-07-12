@@ -18,9 +18,10 @@ public class UserController implements GeneralRepository<User, String> {
         User user = this.findUser(email);
         if (user != null && user.getPassword().equals(password)) {
             System.out.println("Usuário autenticado com sucesso!");
+        } else {
+            System.out.println("E-mail ou senha inválidos");
         }
 
-        System.out.println("E-mail ou senha inválidos");
         return user;
     }
 
