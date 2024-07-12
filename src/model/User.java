@@ -1,14 +1,19 @@
 package model;
 
-public abstract class User {
+public class User {
     private String name;
     private String email;
     private String password;
+    private Role role;
 
     public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public boolean isAdmin() {
+        return this.role == Role.ADMIN;
     }
 
     public String getName() {
@@ -33,5 +38,13 @@ public abstract class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

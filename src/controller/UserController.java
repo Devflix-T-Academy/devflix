@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class UserController implements GeneralRepository {
+public class UserController implements GeneralRepository<User, String> {
     private List<User> users;
 
     public UserController() {
@@ -51,7 +51,12 @@ public class UserController implements GeneralRepository {
 
 
     @Override
-    public void delete(Long id) {
+    public void delete(String email) {
+        if (this.users.remove(this.findUser(email))) {
+            System.out.println("Usuário excluido com sucesso!");
+            return;
+        };
 
+        System.out.println("Erro ao excluir usuário");
     }
 }
