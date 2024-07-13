@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         User admin = new User("admin", "admin@admin.com", "password", Role.ADMIN);
-        User client = new User("client", "client@client.com", "password", Role.CLIENT);
+        User client = new User("client", "client@client.com", "password");
         userController.create(admin);
         userController.create(client);
 
