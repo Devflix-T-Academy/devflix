@@ -1,9 +1,9 @@
 package view;
 
-import controller.user.UserController;
-import model.user.Role;
-import model.user.User;
 import view.movies.MoviesMenu;
+import controller.UserController;
+import model.enums.Role;
+import model.User;
 
 import java.util.Scanner;
 

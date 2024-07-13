@@ -1,12 +1,15 @@
-package model.show;
+package model;
+
+import model.enums.Genre;
+import model.interfaces.Media;
 
 import java.time.LocalDate;
 
-public class Movie extends Show {
+public class Movie extends Media {
     private int duration;
-    public Movie(String title, LocalDate date, String genre, int duration) {
-        super(id, title, date, genre);
 
+    public Movie(String title, LocalDate date, Genre genre, int duration) {
+        super(title, date, genre);
         this.duration = duration;
     }
 

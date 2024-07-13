@@ -1,8 +1,8 @@
 package model;
 
-public class Episode {
-    String title;
-    String preview;
+public  class Episode {
+    private String title;
+    private String preview;
     int number;
 
     public Episode(String title, String preview, int number) {
