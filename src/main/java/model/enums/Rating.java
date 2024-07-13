@@ -1,5 +1,7 @@
 package model.enums;
 
+import util.Cores;
+
 public enum Rating {
     ONE_STAR(1),
     TWO_STARS(2),
@@ -15,5 +17,16 @@ public enum Rating {
 
     public int getStars() {
         return stars;
+    }
+
+    @Override
+    public String toString() {
+        return Cores.TEXT_YELLOW_BOLD_BRIGHT + switch (this) {
+            case ONE_STAR -> "★☆☆☆☆";
+            case TWO_STARS -> "★★☆☆☆";
+            case THREE_STARS -> "★★★☆☆";
+            case FOUR_STARS -> "★★★★☆";
+            case FIVE_STARS -> "★★★★★";
+        };
     }
 }
