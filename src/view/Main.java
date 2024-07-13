@@ -45,12 +45,9 @@ public class Main {
     }
 
     public static void register() {
-        System.out.println("Informe seu nome:");
-        String name = scanner.nextLine();
-        System.out.println("Informe seu e-mail:");
-        String email = scanner.nextLine();
-        System.out.println("Informe uma senha:");
-        String password = scanner.nextLine();
+        String name = promptName();
+        String email = promptEmail();
+        String password = promptPassword();
 
         User user = new User(name, email, password, Role.CLIENT);
         userController.create(user);
@@ -59,6 +56,51 @@ public class Main {
 
         System.out.println("Efetue o login");
         login();
+    }
+
+    public static String promptName() {
+        String name = "";
+
+        while(name.isEmpty()) {
+            System.out.println("Informe seu nome:");
+            name = scanner.nextLine();
+
+            if (name.isEmpty()) {
+                System.out.println("Nome não pode ficar em branco");
+            }
+        }
+
+        return name;
+    }
+
+    public static String promptEmail() {
+        String email = "";
+
+        while(email.isEmpty()) {
+            System.out.println("Informe seu e-mail:");
+            email = scanner.nextLine();
+
+            if (email.isEmpty()) {
+                System.out.println("E-mail não pode ficar em branco");
+            }
+        }
+
+        return email;
+    }
+
+    public static String promptPassword() {
+        String password = "";
+
+        while(password.isEmpty()) {
+            System.out.println("Informe uma senha:");
+            password = scanner.nextLine();
+
+            if (password.isEmpty()) {
+                System.out.println("Senha não pode ficar em branco");
+            }
+        }
+
+        return password;
     }
 
     public static void login() {
