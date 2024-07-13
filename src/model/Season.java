@@ -3,7 +3,7 @@ package model.interfaces.series;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract  class Season {
+public  class Season {
     private List<Episode> episodeList;
 
     public Season(List<Episode> episodeList) {
