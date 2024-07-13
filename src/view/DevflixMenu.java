@@ -1,7 +1,7 @@
 package view;
 
-import controller.show.MovieController;
-import model.show.Movie;
+import controller.MovieController;
+import model.Movie;
 import util.Cores;
 
 import java.io.IOException;

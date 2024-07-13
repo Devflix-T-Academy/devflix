@@ -1,6 +1,6 @@
-package model.show;
+package model.interfaces.series;
 
-public class Episode {
+public abstract class Episode {
     private String title;
     private String preview;
     int number;

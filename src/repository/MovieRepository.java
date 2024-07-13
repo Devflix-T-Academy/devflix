@@ -1,6 +1,6 @@
-package repository.show;
+package repository;
 
-import model.show.Movie;
+import model.Movie;
 
 import java.util.List;
 

@@ -1,12 +1,13 @@
-package controller.show;
+package controller;
 
-import model.show.Movie;
-import repository.show.MovieRepository;
+import controller.interfaces.MediaController;
+import model.Movie;
+import repository.MovieRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieController implements MovieRepository {
+public class MovieController implements MovieRepository, MediaController {
     private List<Movie> movies;
 
     public MovieController() {
@@ -68,5 +69,15 @@ public class MovieController implements MovieRepository {
 
     public Movie getMovieByTitle(String title) {
         return findMovieByTitle(title);
+    }
+
+    @Override
+    public List<Movie> getMostWatched() {
+        return List.of();
+    }
+
+    @Override
+    public List<Movie> getBestRated() {
+        return List.of();
     }
 }

@@ -1,8 +1,8 @@
 package view;
 
-import controller.user.UserController;
-import model.user.Role;
-import model.user.User;
+import controller.UserController;
+import model.enums.Role;
+import model.User;
 
 import java.util.Scanner;
 

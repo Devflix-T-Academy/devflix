@@ -1,9 +1,9 @@
-package model.show;
+package model.interfaces.series;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Season {
+public abstract  class Season {
     private List<Episode> episodeList;
 
     public Season(List<Episode> episodeList) {

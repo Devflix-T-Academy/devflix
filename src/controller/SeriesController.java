@@ -1,6 +1,10 @@
 package controller;
 
+import controller.interfaces.MediaController;
 import model.Series;
+import model.interfaces.series.Episode;
+import services.series.EpisodeService;
+import services.series.SeasonService;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -9,10 +13,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-public class SeriesController {
+public class SeriesController implements MediaController {
     List<Series> seriesList;
     Scanner scanner = new Scanner(System.in);
-
+    private EpisodeService episodeService = new EpisodeService();
     public SeriesController() {
         this.seriesList = new ArrayList<>();
     }
@@ -23,32 +27,32 @@ public class SeriesController {
     }
 
     public void removeSeries(int id){
-        Optional<Series> series = getSeries(id);
-
-        if (series.isPresent() && seriesList.remove(series.get())){
-            System.out.println("Series: " + series.get().getTitle() + " removed");
-        }
-        else {
+        Series serie = getSeries(id);
+        if (serie == null){
             System.out.println("Series with id: " + id + " not found");
+            return;
         }
+        this.seriesList.remove(serie);
+        System.out.println("Series: " + serie.getTitle() + " removed");
+
     }
+
 
     public void updateSeries(int id){
-        Optional<Series> series = getSeries(id);
+        Series serie = getSeries(id);
 
-        if (series.isPresent()){
-            updateShowOptions(series.get());
-        }
-        else {
+        if (serie == null){
             System.out.println("Series with id: " + id + " not found");
+            return;
+        }
+        updateShowOptions(serie);
         }
 
-    }
 
-    public Optional<Series> getSeries(int id){
+    public Series getSeries(int id){
         return seriesList.stream()
                 .filter(serie -> serie.getId() == id)
-                .findFirst();
+                .findFirst().orElse(null);
     }
 
     public void updateShowOptions(Series series){
@@ -128,7 +132,17 @@ public class SeriesController {
     }
 
     public void updateSeasons(Series series){
-        SeasonController seasonController = new SeasonController();
+        SeasonService seasonController = new SeasonService();
         seasonController.doUpdateSeason(series);
+    }
+
+    @Override
+    public List<Series> getMostWatched() {
+        return List.of();
+    }
+
+    @Override
+    public List<Series> getBestRated() {
+        return List.of();
     }
 }
