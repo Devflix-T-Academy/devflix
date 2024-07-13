@@ -6,16 +6,12 @@ import model.User;
 
 import java.util.Scanner;
 
-public class Main {
+public class LoginMenu {
     static Scanner scanner = new Scanner(System.in);
     static UserController userController = new UserController();
     static User currentUser;
 
-    public static void main(String[] args) {
-        User admin = new User("admin", "admin@admin.com", "password", Role.ADMIN);
-        User client = new User("client", "client@client.com", "password");
-        userController.create(admin);
-        userController.create(client);
+    public static void show() {
 
         System.out.println("DEVFLIX - Bem-vindo!");
 

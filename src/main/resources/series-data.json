@@ -1,0 +1,115 @@
+{
+  "series": [
+    {
+      "title": "Breaking Bad",
+      "date": "2008-01-20",
+      "genre": "DRAMA",
+      "watched": 1,
+      "ratings": ["FIVE_STARS"],
+      "seasonList": [
+        {
+          "episodeList": [
+            {
+              "title": "Pilot",
+              "preview": "Introduction to Walter White",
+              "number": 1
+            },
+            {
+              "title": "Cat's in the Bag...",
+              "preview": "Walter and Jesse clean up",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "episodeList": [
+            {
+              "title": "Seven Thirty-Seven",
+              "preview": "Tuco's retribution",
+              "number": 1
+            },
+            {
+              "title": "Grilled",
+              "preview": "Escape from Tuco",
+              "number": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Game of Thrones",
+      "date": "2011-04-17",
+      "genre": "FANTASIA",
+      "watched": 1,
+      "ratings": ["FIVE_STARS", "FOUR_STARS"],
+      "seasonList": [
+        {
+          "episodeList": [
+            {
+              "title": "Winter Is Coming",
+              "preview": "Introduction to Westeros",
+              "number": 1
+            },
+            {
+              "title": "The Kingsroad",
+              "preview": "Journey to King's Landing",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "episodeList": [
+            {
+              "title": "The North Remembers",
+              "preview": "Robb Stark prepares for war",
+              "number": 1
+            },
+            {
+              "title": "The Night Lands",
+              "preview": "Theon returns home",
+              "number": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Stranger Things",
+      "date": "2016-07-15",
+      "genre": "FICCAO_CIENTIFICA",
+      "watched": 1,
+      "ratings": ["FIVE_STARS", "FOUR_STARS", "THREE_STARS"],
+      "seasonList": [
+        {
+          "episodeList": [
+            {
+              "title": "Chapter One: The Vanishing of Will Byers",
+              "preview": "A young boy disappears",
+              "number": 1
+            },
+            {
+              "title": "Chapter Two: The Weirdo on Maple Street",
+              "preview": "A girl with powers",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "episodeList": [
+            {
+              "title": "Chapter One: MADMAX",
+              "preview": "Newcomers in Hawkins",
+              "number": 1
+            },
+            {
+              "title": "Chapter Two: Trick or Treat, Freak",
+              "preview": "Halloween in Hawkins",
+              "number": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

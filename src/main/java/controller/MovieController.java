@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MovieController implements MovieRepository, MediaController {
-    private List<Movie> movies;
+    public static List<Movie> movies;
 
     public MovieController() {
-        this.movies = new ArrayList<>();
+      
     }
 
     @Override
