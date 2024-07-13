@@ -2,7 +2,6 @@ package controller;
 
 import controller.interfaces.MediaController;
 import model.Series;
-import model.interfaces.series.Episode;
 import services.series.EpisodeService;
 import services.series.SeasonService;
 

@@ -1,6 +1,6 @@
 package services.series;
 
-import model.interfaces.series.Season;
+import model.Season;
 
 import java.util.List;
 

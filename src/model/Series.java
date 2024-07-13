@@ -2,7 +2,6 @@ package model;
 
 import model.enums.Genre;
 import model.interfaces.Media;
-import model.interfaces.series.Season;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

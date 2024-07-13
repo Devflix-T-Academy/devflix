@@ -1,4 +1,4 @@
-package model.interfaces.series;
+package model;
 
 public  class Episode {
     private String title;
