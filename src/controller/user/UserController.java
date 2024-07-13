@@ -1,6 +1,6 @@
-package controller;
+package controller.user;
 
-import model.User;
+import model.user.User;
 import repository.GeneralRepository;
 
 import java.util.ArrayList;

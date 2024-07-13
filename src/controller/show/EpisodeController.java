@@ -1,6 +1,6 @@
-package controller;
+package controller.show;
 
-import model.Season;
+import model.show.Season;
 
 import java.util.List;
 

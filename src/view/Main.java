@@ -1,8 +1,8 @@
 package view;
 
-import controller.UserController;
-import model.Role;
-import model.User;
+import controller.user.UserController;
+import model.user.Role;
+import model.user.User;
 
 import java.util.Scanner;
 

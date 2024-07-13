@@ -1,7 +1,7 @@
-package controller;
+package controller.show;
 
-import model.Season;
-import model.Series;
+import model.show.Season;
+import model.show.Series;
 
 import java.util.List;
 import java.util.Scanner;

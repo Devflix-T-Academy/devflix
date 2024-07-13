@@ -1,4 +1,4 @@
-package model;
+package model.show;
 
 import java.time.LocalDate;
 
@@ -45,5 +45,10 @@ public abstract class Show {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public void displayDetails() {
+        System.out.println("Title: " + getTitle());
+        System.out.println("Genre: " + getGenre());
     }
 }

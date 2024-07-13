@@ -1,10 +1,10 @@
-package model;
+package model.show;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Series extends Show{
+public class Series extends Show {
     List<Season> seasonList;
 
     public Series(int id, String title, LocalDate date, String genre) {

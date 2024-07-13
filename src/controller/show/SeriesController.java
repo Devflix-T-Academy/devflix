@@ -1,6 +1,6 @@
-package controller;
+package controller.show;
 
-import model.Series;
+import model.show.Series;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
