@@ -1,9 +1,11 @@
 package view;
 
+import com.google.gson.JsonObject;
 import controller.MovieController;
 import model.Movie;
 import model.enums.Genre;
 import util.Cores;
+import util.ScanValidation;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -20,31 +22,28 @@ public class DevflixMenu {
         int year, duration;
 
         while (true) {
-            System.out.println(Cores.TEXT_RED_BOLD + "*****************************************************");
-            System.out.println("                                                     ");
-            System.out.println("                    Devflix Menu                     ");
-            System.out.println("                                                     ");
-            System.out.println("*****************************************************");
-            System.out.println("                                                     ");
-            System.out.println("            1 - Adicionar Filme                       ");
-            System.out.println("            2 - Listar Todos os Filmes               ");
-            System.out.println("            3 - Buscar Filme por Título              ");
-            System.out.println("            4 - Atualizar Filme                      ");
-            System.out.println("            5 - Remover Filme                        ");
-            System.out.println("            6 - Sair                                 ");
-            System.out.println("                                                     ");
-            System.out.println("*****************************************************");
-            System.out.println("Digite sua opção:                                   " + Cores.TEXT_RESET);
+            System.out.println("""
+                            """ + Cores.TEXT_RED_BOLD + """
+                            *****************************************************
+                                                                                 
+                                                Devflix Menu                     
+                                                                                 
+                            *****************************************************
+                                                                                 
+                                        1 - Adicionar Filme                       
+                                        2 - Listar Todos os Filmes               
+                                        3 - Buscar Filme por Título              
+                                        4 - Atualizar Filme                      
+                                        5 - Remover Filme
+                                        6 - Assistir Filme    
+                                        7 - Sair                                 
+                                                                                 
+                            *****************************************************
+                            Digite sua opção:                                   """ + Cores.TEXT_RESET);
 
-            try {
-                option = scanner.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("\nPor favor, digite um número inteiro válido!");
-                scanner.nextLine();
-                option = 0;
-            }
+            option = ScanValidation.getValidIntInput(scanner);
 
-            if (option == 6) {
+            if (option == 7) {
                 System.out.println(Cores.TEXT_RED_BOLD + "\nDevflix - Seu Gerenciador de Filmes!");
                 about();
                 scanner.close();
@@ -131,6 +130,23 @@ public class DevflixMenu {
                     movieController.removeMovieByTitle(title);
 
                     keyPress();
+                    break;
+                case 6:
+                    movieController.listAllMovies();
+                    keyPress();
+                    while (true){
+                        System.out.println("Qual filme deseja assistir?");
+                        title = ScanValidation.getValidStringInput(scanner, 1);
+                        Movie movie = movieController.getMovieByTitle(title);
+                        if (movie != null) {
+                            System.out.println("Assitindo filme: " + movie.getTitle());
+                            movie.setWatched(movie.getWatched() + 1);
+                            RatingMenu.Show(movie);
+                            break;
+                        }
+                        System.out.println("Filme não encontrado");
+                    }
+
                     break;
                 default:
                     System.out.println(Cores.TEXT_RED_BOLD + "\nOpção inválida!\n" + Cores.TEXT_RESET);
