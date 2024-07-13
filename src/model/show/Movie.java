@@ -4,9 +4,9 @@ import java.time.LocalDate;
 
 public class Movie extends Show {
     private int duration;
-
     public Movie(String title, LocalDate date, String genre, int duration) {
         super(id, title, date, genre);
+
         this.duration = duration;
     }
 
