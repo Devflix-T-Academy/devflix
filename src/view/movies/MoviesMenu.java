@@ -1,7 +1,7 @@
 package view.movies;
 
-import controller.show.MovieController;
-import model.show.Movie;
+import controller.MovieController;
+import model.Movie;
 import util.Cores;
 import view.DevflixMenu;
 
@@ -152,6 +152,7 @@ public class MoviesMenu {
         System.out.println("Digite a duração em minutos: ");
         duration = scanner.nextInt();
 
+        //FIXME
         Movie newMovie = new Movie(title, LocalDate.now(), genre, duration);
         movieController.addMovie(newMovie);
     }
