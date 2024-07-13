@@ -3,10 +3,12 @@ package model.show;
 public class Episode {
     private String title;
     private String preview;
+    int number;
 
-    public Episode(String title, String preview) {
+    public Episode(String title, String preview, int number) {
         this.title = title;
         this.preview = preview;
+        this.number = number;
     }
 
     public String getTitle() {
@@ -23,5 +25,13 @@ public class Episode {
 
     public void setPreview(String preview) {
         this.preview = preview;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 }
