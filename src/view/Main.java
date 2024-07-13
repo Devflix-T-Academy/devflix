@@ -67,9 +67,10 @@ public class Main {
         System.out.println("Senha:");
         String password = scanner.nextLine();
 
-        User user = userController.authenticate(email, password);
-        if (user != null) {
-            currentUser = user;
+        currentUser = userController.authenticate(email, password);
+
+        if (currentUser != null && currentUser.getRole() == Role.ADMIN) {
+            DevflixMenu.adminMoviesMenu();
         }
     }
 }
