@@ -1,16 +1,18 @@
-package model;
+package model.show;
 
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
 public abstract class Show {
+    static int id;
     protected String title;
     protected LocalDate date;
     protected String genre;
     protected static List<String> genreList = Arrays.asList("Terror", "Drama", "Romance", "Suspense", "Ação", "Comédia");
 
-    public Show(String title, LocalDate date, String genre) {
+    public Show(int id, String title, LocalDate date, String genre) {
+        Show.id = id + 1;
         this.title = title;
         this.date = date;
         this.genre = genre;
@@ -46,5 +48,10 @@ public abstract class Show {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public void displayDetails() {
+        System.out.println("Title: " + getTitle());
+        System.out.println("Genre: " + getGenre());
     }
 }
