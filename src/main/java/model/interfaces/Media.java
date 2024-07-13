@@ -4,6 +4,7 @@ import model.enums.Genre;
 import model.enums.Rating;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public abstract class Media {
     private LocalDate date;
     private Genre genre;
     private int watched;
-    private List<Rating> ratings;
+    private List<Rating> ratings = new ArrayList<>();
 
     public Media(String title, LocalDate date, Genre genre) {
         this.id = Media.idCounter++;
