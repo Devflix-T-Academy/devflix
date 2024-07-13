@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Series extends Show{
-    List<Season> seasonList;
+    private List<Season> seasonList;
 
-    public Series(int id, String title, LocalDate date, String genre) {
-        super(id, title, date, genre);
+    public Series(String title, LocalDate date, String genre) {
+        super(title, date, genre);
         this.seasonList = new ArrayList<>();
     }
 
@@ -20,4 +20,10 @@ public class Series extends Show{
         this.seasonList.add(season);
     }
 
+    public String toString(int index) {
+        return "ID - " + (index+1) +
+                "\nTítulo - " + title +
+                "\nData de lançamento - " + date +
+                "\nGênero - " + genre ;
+    }
 }
