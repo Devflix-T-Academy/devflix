@@ -12,8 +12,8 @@ public class Main {
     static User currentUser;
 
     public static void main(String[] args) {
-        User admin = new User("admin", "admin", "admin@admin.com", Role.ADMIN);
-        User client = new User("client", "client", "client@client.com", Role.CLIENT);
+        User admin = new User("admin", "admin@admin.com", "password", Role.ADMIN);
+        User client = new User("client", "client@client.com", "password", Role.CLIENT);
         userController.create(admin);
         userController.create(client);
 
@@ -67,9 +67,10 @@ public class Main {
         System.out.println("Senha:");
         String password = scanner.nextLine();
 
-        User user = userController.authenticate(email, password);
-        if (user != null) {
-            currentUser = user;
+        currentUser = userController.authenticate(email, password);
+
+        if (currentUser != null && currentUser.isAdmin()) {
+            DevflixMenu.adminMenu();
         }
     }
 }
