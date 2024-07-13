@@ -1,26 +1,21 @@
 package model.show;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 public abstract class Show {
     static int id;
-    String title;
-    LocalDate date;
-    String genre;
+    protected String title;
+    protected LocalDate date;
+    protected String genre;
+    protected static List<String> genreList = Arrays.asList("Terror", "Drama", "Romance", "Suspense", "Ação", "Comédia");
 
     public Show(int id, String title, LocalDate date, String genre) {
         Show.id = id + 1;
         this.title = title;
         this.date = date;
         this.genre = genre;
-    }
-
-    public static int getId() {
-        return id;
-    }
-
-    public static void setId(int id) {
-        Show.id = id;
     }
 
     public String getTitle() {
@@ -37,6 +32,14 @@ public abstract class Show {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public static List<String> getGenreList() {
+        return genreList;
+    }
+
+    public static void addGenre(String genre) {
+        Show.genreList.add(genre);
     }
 
     public String getGenre() {

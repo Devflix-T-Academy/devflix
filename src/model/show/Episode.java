@@ -1,8 +1,8 @@
 package model.show;
 
 public class Episode {
-    String title;
-    String preview;
+    private String title;
+    private String preview;
     int number;
 
     public Episode(String title, String preview, int number) {
