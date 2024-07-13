@@ -38,27 +38,65 @@ public class MoviesMenu {
             switch (option) {
                 case 1:
                     newMovieOption();
-                    keyPress();
+                    DevflixMenu.keyPress();
                     break;
                 case 2:
                     listMoviesOption();
-                    keyPress();
+                    DevflixMenu.keyPress();
                     break;
                 case 3:
                     searchMovieOption();
-                    keyPress();
+                    DevflixMenu.keyPress();
                     break;
                 case 4:
                     updateMovieOption();
-                    keyPress();
+                    DevflixMenu.keyPress();
                     break;
                 case 5:
                     deleteMovieOption();
-                    keyPress();
+                    DevflixMenu.keyPress();
                     break;
                 default:
-                    invalidOption();
-                    keyPress();
+                    DevflixMenu.invalidOption();
+                    DevflixMenu.keyPress();
+                    break;
+            }
+        }
+    }
+
+    public static void clientMenu() {
+        int option;
+
+        while (true) {
+            clientOptions();
+
+            try {
+                option = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("\nPor favor, digite um número inteiro válido!");
+                scanner.nextLine();
+                option = 0;
+            }
+
+            if (option == 3) {
+                System.out.println(Cores.TEXT_RED_BOLD + "\nDevflix - Seu Gerenciador de Filmes!");
+                DevflixMenu.about();
+                scanner.close();
+                System.exit(0);
+            }
+
+            switch (option) {
+                case 1:
+                    listMoviesOption();
+                    DevflixMenu.keyPress();
+                    break;
+                case 2:
+                    searchMovieOption();
+                    DevflixMenu.keyPress();
+                    break;
+                default:
+                    DevflixMenu.invalidOption();
+                    DevflixMenu.keyPress();
                     break;
             }
         }
@@ -82,14 +120,61 @@ public class MoviesMenu {
         System.out.println("Digite sua opção:                                   " + Cores.TEXT_RESET);
     }
 
-    private static void deleteMovieOption() {
-        String title;
-        System.out.println(Cores.TEXT_WHITE + "Remover Filme\n");
+    private static void clientOptions() {
+        System.out.println(Cores.TEXT_RED_BOLD + "*****************************************************");
+        System.out.println("                                                     ");
+        System.out.println("                      Filmes                         ");
+        System.out.println("                                                     ");
+        System.out.println("*****************************************************");
+        System.out.println("                                                     ");
+        System.out.println("            1 - Listar Todos os Filmes               ");
+        System.out.println("            2 - Buscar Filme por Título              ");
+        System.out.println("            3 - Sair                                 ");
+        System.out.println("                                                     ");
+        System.out.println("*****************************************************");
+        System.out.println("Digite sua opção:                                   " + Cores.TEXT_RESET);
+    }
 
-        System.out.println("Digite o título do filme a ser removido: ");
+    private static void newMovieOption() {
+        int duration;
+        int year;
+        String title;
+        String genre;
+        System.out.println(Cores.TEXT_WHITE + "Adicionar Filme\n");
+
+        System.out.println("Digite o título: ");
         scanner.nextLine();
         title = scanner.nextLine();
-        movieController.removeMovieByTitle(title);
+        System.out.println("Digite o gênero: ");
+        genre = scanner.nextLine();
+        System.out.println("Digite o ano: ");
+        year = scanner.nextInt();
+        System.out.println("Digite a duração em minutos: ");
+        duration = scanner.nextInt();
+
+        Movie newMovie = new Movie(title, LocalDate.now(), genre, duration);
+        movieController.addMovie(newMovie);
+    }
+
+    private static void listMoviesOption() {
+        System.out.println(Cores.TEXT_WHITE + "Listar Todos os Filmes\n");
+        movieController.listAllMovies();
+    }
+
+    private static void searchMovieOption() {
+        String title;
+        System.out.println(Cores.TEXT_WHITE + "Buscar Filme por Título\n");
+
+        System.out.println("Digite o título: ");
+        scanner.nextLine();
+        title = scanner.nextLine();
+        Movie foundMovie = movieController.findMovieByTitle(title);
+
+        if (foundMovie != null) {
+            foundMovie.displayDetails();
+        } else {
+            System.out.println("Filme não encontrado!");
+        }
     }
 
     private static void updateMovieOption() {
@@ -123,111 +208,15 @@ public class MoviesMenu {
         }
     }
 
-    private static void searchMovieOption() {
+    private static void deleteMovieOption() {
         String title;
-        System.out.println(Cores.TEXT_WHITE + "Buscar Filme por Título\n");
+        System.out.println(Cores.TEXT_WHITE + "Remover Filme\n");
 
-        System.out.println("Digite o título: ");
+        System.out.println("Digite o título do filme a ser removido: ");
         scanner.nextLine();
         title = scanner.nextLine();
-        Movie foundMovie = movieController.findMovieByTitle(title);
-
-        if (foundMovie != null) {
-            foundMovie.displayDetails();
-        } else {
-            System.out.println("Filme não encontrado!");
-        }
+        movieController.removeMovieByTitle(title);
     }
 
-    private static void listMoviesOption() {
-        System.out.println(Cores.TEXT_WHITE + "Listar Todos os Filmes\n");
-        movieController.listAllMovies();
-    }
 
-    private static void newMovieOption() {
-        int duration;
-        int year;
-        String title;
-        String genre;
-        System.out.println(Cores.TEXT_WHITE + "Adicionar Filme\n");
-
-        System.out.println("Digite o título: ");
-        scanner.nextLine();
-        title = scanner.nextLine();
-        System.out.println("Digite o gênero: ");
-        genre = scanner.nextLine();
-        System.out.println("Digite o ano: ");
-        year = scanner.nextInt();
-        System.out.println("Digite a duração em minutos: ");
-        duration = scanner.nextInt();
-
-        Movie newMovie = new Movie(title, LocalDate.now(), genre, duration);
-        movieController.addMovie(newMovie);
-    }
-
-    public static void clientMenu() {
-        int option;
-
-        while (true) {
-            clientOptions();
-
-            try {
-                option = scanner.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("\nPor favor, digite um número inteiro válido!");
-                scanner.nextLine();
-                option = 0;
-            }
-
-            if (option == 3) {
-                System.out.println(Cores.TEXT_RED_BOLD + "\nDevflix - Seu Gerenciador de Filmes!");
-                DevflixMenu.about();
-                scanner.close();
-                System.exit(0);
-            }
-
-            switch (option) {
-                case 1:
-                    listMoviesOption();
-                    keyPress();
-                    break;
-                case 2:
-                    searchMovieOption();
-                    keyPress();
-                    break;
-                default:
-                    invalidOption();
-                    keyPress();
-                    break;
-            }
-        }
-    }
-
-    private static void clientOptions() {
-        System.out.println(Cores.TEXT_RED_BOLD + "*****************************************************");
-        System.out.println("                                                     ");
-        System.out.println("                      Filmes                         ");
-        System.out.println("                                                     ");
-        System.out.println("*****************************************************");
-        System.out.println("                                                     ");
-        System.out.println("            1 - Listar Todos os Filmes               ");
-        System.out.println("            2 - Buscar Filme por Título              ");
-        System.out.println("            3 - Sair                                 ");
-        System.out.println("                                                     ");
-        System.out.println("*****************************************************");
-        System.out.println("Digite sua opção:                                   " + Cores.TEXT_RESET);
-    }
-
-    private static void invalidOption() {
-        System.out.println(Cores.TEXT_RED_BOLD + "\nOpção inválida!\n" + Cores.TEXT_RESET);
-    }
-
-    public static void keyPress() {
-        try {
-            System.out.println(Cores.TEXT_RESET + "\n\nPressione Enter para continuar...");
-            System.in.read();
-        } catch (IOException e) {
-            System.out.println("Você pressionou uma tecla diferente de Enter!");
-        }
-    }
 }

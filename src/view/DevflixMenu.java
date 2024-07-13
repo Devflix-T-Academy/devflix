@@ -3,6 +3,7 @@ package view;
 import util.Cores;
 import view.movies.MoviesMenu;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -49,11 +50,20 @@ public class DevflixMenu {
                         MoviesMenu.clientMenu();
                     }
                 case 2:
-                    System.out.println("implementar menu de séries");
+                    // Implementar menu de séries
+                    break;
+                default:
+                    DevflixMenu.invalidOption();
+                    keyPress();
+                    break;
 
             }
         }
 
+    }
+
+    public static void invalidOption() {
+        System.out.println(Cores.TEXT_RED_BOLD + "\nOpção inválida!\n" + Cores.TEXT_RESET);
     }
 
     public static void about() {
@@ -62,6 +72,15 @@ public class DevflixMenu {
         System.out.println("T-Academy");
         System.out.println("github.com/Devflix-T-Academy");
         System.out.println("*********************************************************");
+    }
+
+    public static void keyPress() {
+        try {
+            System.out.println(Cores.TEXT_RESET + "\n\nPressione Enter para continuar...");
+            System.in.read();
+        } catch (IOException e) {
+            System.out.println("Você pressionou uma tecla diferente de Enter!");
+        }
     }
 
 }
