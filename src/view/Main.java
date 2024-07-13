@@ -3,13 +3,14 @@ package view;
 import controller.user.UserController;
 import model.user.Role;
 import model.user.User;
+import view.movies.MoviesMenu;
 
 import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static UserController userController = new UserController();
-    static User currentUser;
+    public static User currentUser;
 
     public static void main(String[] args) {
         User admin = new User("admin", "admin@admin.com", "password", Role.ADMIN);
@@ -111,8 +112,8 @@ public class Main {
 
         currentUser = userController.authenticate(email, password);
 
-        if (currentUser != null && currentUser.isAdmin()) {
-            DevflixMenu.adminMenu();
+        if (currentUser != null) {
+            DevflixMenu.mainMenu();
         }
     }
 }
