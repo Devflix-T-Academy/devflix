@@ -1,7 +1,7 @@
 package controller;
 
-import model.Movie;
 import model.Watched;
+import model.show.Movie;
 
 import java.util.*;
 import java.util.stream.Collectors;

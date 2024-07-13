@@ -9,6 +9,7 @@ public abstract class Show {
     protected String title;
     protected LocalDate date;
     protected String genre;
+    private int watched;
     protected static List<String> genreList = Arrays.asList("Terror", "Drama", "Romance", "Suspense", "Ação", "Comédia");
 
     public Show(int id, String title, LocalDate date, String genre) {
@@ -16,6 +17,7 @@ public abstract class Show {
         this.title = title;
         this.date = date;
         this.genre = genre;
+        this.watched = 0;
     }
 
     public String getTitle() {
@@ -48,6 +50,26 @@ public abstract class Show {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public static int getId() {
+        return id;
+    }
+
+    public static void setId(int id) {
+        Show.id = id;
+    }
+
+    public int getWatched() {
+        return watched;
+    }
+
+    public void setWatched(int watched) {
+        this.watched = watched;
+    }
+
+    public static void setGenreList(List<String> genreList) {
+        Show.genreList = genreList;
     }
 
     public void displayDetails() {
