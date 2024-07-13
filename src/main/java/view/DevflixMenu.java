@@ -2,6 +2,7 @@ package view;
 
 import controller.MovieController;
 import model.Movie;
+import model.enums.Genre;
 import util.Cores;
 
 import java.io.IOException;
@@ -59,12 +60,13 @@ public class DevflixMenu {
                     title = scanner.nextLine();
                     System.out.println("Digite o gênero: ");
                     genre = scanner.nextLine();
+                    Genre genre1 = Genre.valueOf(genre);
                     System.out.println("Digite o ano: ");
                     year = scanner.nextInt();
                     System.out.println("Digite a duração em minutos: ");
                     duration = scanner.nextInt();
 
-                    Movie newMovie = new Movie(title, LocalDate.now(), genre, duration);
+                    Movie newMovie = new Movie(title, LocalDate.now(), genre1, duration);
                     movieController.addMovie(newMovie);
 
                     keyPress();
@@ -107,8 +109,9 @@ public class DevflixMenu {
                         duration = scanner.nextInt();
 
                         LocalDate date = LocalDate.now();
+                        Genre genre2 = Genre.valueOf(genre);
 
-                        movieToUpdate.setGenre(genre);
+                        movieToUpdate.setGenre(genre2);
                         movieToUpdate.setDate(date);
                         movieToUpdate.setDuration(duration);
                         movieController.updateMovie(movieToUpdate);

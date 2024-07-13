@@ -1,0 +1,28 @@
+{
+  "movies": [
+    {
+      "title": "Inception",
+      "date": "2010-07-16",
+      "genre": "FICCAO_CIENTIFICA",
+      "duration": 148,
+      "watched": 1,
+      "ratings": ["FIVE_STARS"]
+    },
+    {
+      "title": "The Dark Knight",
+      "date": "2008-07-18",
+      "genre": "ACAO",
+      "duration": 152,
+      "watched": 1,
+      "ratings": ["FIVE_STARS", "FOUR_STARS"]
+    },
+    {
+      "title": "Interstellar",
+      "date": "2014-11-07",
+      "genre": "FICCAO_CIENTIFICA",
+      "duration": 169,
+      "watched": 1,
+      "ratings": ["FIVE_STARS", "FOUR_STARS", "THREE_STARS"]
+    }
+  ]
+}

@@ -8,10 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserController implements GeneralRepository<User, String> {
-    private List<User> users;
+    public static List<User> users = new ArrayList();
 
     public UserController() {
-        this.users = new ArrayList<>();
     }
 
     public User authenticate(String email, String password) {
@@ -56,7 +55,8 @@ public class UserController implements GeneralRepository<User, String> {
         if (this.users.remove(this.findUser(email))) {
             System.out.println("Usuário excluido com sucesso!");
             return;
-        };
+        }
+        ;
 
         System.out.println("Erro ao excluir usuário");
     }
