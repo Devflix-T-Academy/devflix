@@ -1,15 +1,15 @@
-package controller.show;
+package services.series;
 
-import model.show.Season;
-import model.show.Series;
+import model.Season;
+import model.Series;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class SeasonController {
+public class SeasonService {
     Scanner scanner = new Scanner(System.in);
 
-    public SeasonController(){}
+    public SeasonService(){}
 
     public void removeSeason(Series series){
 
@@ -38,7 +38,7 @@ public class SeasonController {
     }
 
     public void updateEpisode(List<Season> season){
-        EpisodeController episodeController = new EpisodeController();
+        EpisodeService episodeController = new EpisodeService();
         episodeController.doUpdateSeries(season);
     }
 }

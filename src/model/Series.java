@@ -1,15 +1,18 @@
 package model;
 
+import model.enums.Genre;
+import model.interfaces.Media;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Series extends Show{
+public class Series extends Media {
     List<Season> seasonList;
 
-    public Series(int id, String title, LocalDate date, String genre, int watched, List<Season> seasonList) {
-        super(id, title, date, genre, watched);
-        this.seasonList = seasonList;
+    public Series(String title, LocalDate date, Genre genre) {
+        super(title, date, genre);
+        this.seasonList = new ArrayList<>();
     }
 
     public List<Season> getSeasonList() {

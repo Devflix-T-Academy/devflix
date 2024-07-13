@@ -1,10 +1,10 @@
-package controller.show;
+package services.series;
 
-import model.show.Season;
+import model.Season;
 
 import java.util.List;
 
-public class EpisodeController {
+public class EpisodeService {
 
     public void doUpdateSeries(List<Season> season){
 
