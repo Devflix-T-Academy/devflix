@@ -10,7 +10,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DevflixMenu {
-    public static void adminMoviesMenu() {
+    public static void adminMenu() {
         MovieController movieController = new MovieController();
         Scanner scanner = new Scanner(System.in);
 
