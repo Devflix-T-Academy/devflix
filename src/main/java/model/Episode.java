@@ -1,14 +1,18 @@
 package model;
 
+import util.CounterIds;
+
 public  class Episode {
     private String title;
     private String preview;
-    int number;
+    private Integer number;
+    private Long id;
 
-    public Episode(String title, String preview, int number) {
+    public Episode(String title, String preview, Integer number) {
         this.title = title;
         this.preview = preview;
         this.number = number;
+        this.id = CounterIds.getNextEpisodeId();
     }
 
     public String getTitle() {
@@ -27,11 +31,11 @@ public  class Episode {
         this.preview = preview;
     }
 
-    public int getNumber() {
-        return number;
+    public Long getId() {
+        return id;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setId(Long id) {
+        this.id = id;
     }
 }

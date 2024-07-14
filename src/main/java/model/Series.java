@@ -2,6 +2,7 @@ package model;
 
 import model.enums.Genre;
 import model.interfaces.Media;
+import util.CounterIds;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class Series extends Media {
     List<Season> seasonList;
 
     public Series(String title, LocalDate date, Genre genre) {
-        super(title, date, genre);
+        super(CounterIds.getNextSeriesId(), title, date, genre);
         this.seasonList = new ArrayList<>();
     }
 
@@ -23,4 +24,15 @@ public class Series extends Media {
         this.seasonList.add(season);
     }
 
+    public void setSeasonList(List<Season> seasonList) {
+        this.seasonList = seasonList;
+    }
+
+    @Override
+    public String toString() {
+        return "ID - " + (this.getId()) +
+                "\nTítulo - " + this.getTitle() +
+                "\nData de lançamento - " + this.getDate() +
+                "\nGênero - " + this.getGenre().getGenreName() ;
+    }
 }
