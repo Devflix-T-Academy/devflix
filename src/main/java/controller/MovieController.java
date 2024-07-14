@@ -63,6 +63,7 @@ public class MovieController implements MovieRepository, MediaController {
         } else {
             for (Movie movie : movies) {
                 movie.displayDetails();
+                System.out.println();
             }
         }
     }

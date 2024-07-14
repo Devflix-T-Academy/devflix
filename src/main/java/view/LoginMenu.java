@@ -107,8 +107,8 @@ public class LoginMenu {
 
         currentUser = userController.authenticate(email, password);
 
-        if (currentUser != null && currentUser.isAdmin()) {
-            DevflixMenu.adminMenu();
+        if (currentUser != null) {
+            DevflixMenu.mainMenu();
         }
     }
 }
