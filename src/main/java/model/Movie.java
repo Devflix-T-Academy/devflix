@@ -2,6 +2,8 @@ package model;
 
 import model.enums.Genre;
 import model.interfaces.Media;
+import org.w3c.dom.css.Counter;
+import util.CounterIds;
 
 import java.time.LocalDate;
 
@@ -9,7 +11,7 @@ public class Movie extends Media {
     private int duration;
 
     public Movie(String title, LocalDate date, Genre genre, int duration) {
-        super(title, date, genre);
+        super(CounterIds.getNextMovieId(), title, date, genre);
         this.duration = duration;
     }
 

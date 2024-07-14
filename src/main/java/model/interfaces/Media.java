@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public abstract class Media {
-    public static Long idCounter = 0L;
     private Long id;
     private String title;
     private LocalDate date;
@@ -17,8 +16,8 @@ public abstract class Media {
     private int watched;
     private List<Rating> ratings = new ArrayList<>();
 
-    public Media(String title, LocalDate date, Genre genre) {
-        this.id = Media.idCounter++;
+    public Media( Long id, String title, LocalDate date, Genre genre) {
+        this.id = id;
         this.title = title;
         this.date = date;
         this.genre = genre;
@@ -39,14 +38,6 @@ public abstract class Media {
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public static Long getIdCounter() {
-        return idCounter;
-    }
-
-    public static void setIdCounter(Long idCounter) {
-        Media.idCounter = idCounter;
     }
 
     public void setId(Long id) {
