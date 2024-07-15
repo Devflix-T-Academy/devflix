@@ -35,7 +35,12 @@ public class SeriesController implements MediaController {
               .findFirst().orElse(null);
     }
 
-    //fazer por paginação
+    public Series getSeries(String title) {
+        return  seriesList.stream()
+                .filter(series -> series.getTitle().equals(title))
+                .findFirst().orElse(null);
+    }
+
     public void printSeries() {
         System.out.println("\nSéries disponíveis\n");
         SeriesController.seriesList.forEach(series -> System.out.println(series.getId() + " - " + series.getTitle()));

@@ -74,6 +74,57 @@ public class SeriesMenu {
         }
     }
 
+    public void clientMenu() {
+        boolean validInput = false;
+
+        while (!validInput) {
+            System.out.println("""
+                    \s
+                     Séries
+                                \s
+                     1 - Listar Todas as séries
+                     2 - Buscar Série por Título
+                     3 - Assistir Série
+                     4 - Voltar ao menu principal
+                                \s
+                     Sua opção:
+                    \s""");
+            switch(ScanValidation.getValidIntInput(new Scanner(System.in))){
+                case 1 -> {
+                    seriesController.printSeries();
+                    validInput = true;
+                    clientMenu();
+                }
+                case 2 -> {
+                    getSeriesByTitle();
+                    validInput = true;
+                    clientMenu();
+                }
+                case 3 -> {
+                    // serie assistida e avaliacao
+                    clientMenu();
+                }
+                case 4 -> {
+                    DevflixMenu.mainMenu();
+                }
+            }
+        }
+    }
+
+    public void getSeriesByTitle(){
+        System.out.println("Digite o título: ");
+        String title = ScanValidation.getValidStringInput(new Scanner(System.in),4);
+        Series series = seriesController.getSeries(title);
+
+        if(series != null){
+            System.out.println(series.toString());
+        }
+        else {
+            System.out.println("Série não encontrada!\n");
+        }
+    }
+
+
     public void newSeriesOption(){
         boolean validInput = false;
         String title = "";
