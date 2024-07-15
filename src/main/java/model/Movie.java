@@ -28,5 +28,6 @@ public class Movie extends Media {
         System.out.println("Título: " + getTitle());
         System.out.println("Gênero: " + getGenre());
         System.out.println("Duração: " + getDuration() + " minutos");
+        System.out.println("Avaliações: " + getRatings());
     }
 }

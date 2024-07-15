@@ -5,28 +5,32 @@ import model.Movie;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import util.Cores;
 
 
 public class WatchedMovieService implements Watchable<Movie> {
-    private Map<Integer, Movie> movies;
+    private static Map<Integer, List<Movie>> movies;
 
     public WatchedMovieService(List<Movie> list) {
         this.movies = new HashMap<>();
-        this.criarLista(list);
+        this.createList(list);
     }
 
-    public void imprimirLista(){
-        movies.entrySet().stream().forEach(value -> {
-            System.out.println(value.getKey() + value.getValue().getTitle());
+    @Override
+    public void showList(){
+        movies.forEach((key, value) -> {
+            System.out.println(Cores.TEXT_RED_BOLD + "Vezes assistidas: " + key + Cores.TEXT_RESET );
+            value.forEach(movie-> {
+                movie.displayDetails();
+                System.out.println();
+            });
         });
     }
 
     @Override
-    public void criarLista(List<Movie> list) {
+    public void createList(List<Movie> list) {
         movies = list.stream()
-                .collect(Collectors.toMap(
-                        Movie::getWatched,
-                        movie->movie));
+                .collect(Collectors.groupingBy(Movie :: getWatched));
     }
 
 
