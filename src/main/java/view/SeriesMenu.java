@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class SeriesMenu {
     SeriesController seriesController = new SeriesController();
 
-    public void show() {
+    public void adminMenu() {
         boolean validInput = false;
 
         while (!validInput) {
@@ -33,7 +33,7 @@ public class SeriesMenu {
                 case 1 -> {
                     newSeriesOption();
                     validInput = true;
-                    show();
+                    adminMenu();
                 }
                 case 2 -> {
                     if (seriesController.seriesListIsEmpty()) {
@@ -44,7 +44,7 @@ public class SeriesMenu {
                         updateOptions(pickedSeries);
                         validInput = true;
                     }
-                    show();
+                    adminMenu();
                 }
                 case 3 -> {
                     if (seriesController.seriesListIsEmpty()) {
@@ -55,7 +55,7 @@ public class SeriesMenu {
                         seriesController.removeSeries(pickedSeries);
                         validInput = true;
                     }
-                    show();
+                    adminMenu();
                 }
                 case 4 -> {
                     if (seriesController.seriesListIsEmpty()) {
@@ -66,7 +66,8 @@ public class SeriesMenu {
                     }
                 }
                 case 5 -> {
-                    //método do menu principal
+                    DevflixMenu.mainMenu();
+                    validInput = true;
                 }
                 default -> System.out.println("Opção inválida, por favor, tente novamente");
             }
@@ -77,7 +78,7 @@ public class SeriesMenu {
         boolean validInput = false;
         String title = "";
         LocalDate date = null;
-        String genre = "";
+        int genre = 0;
 
         while (!validInput) {
             System.out.println("Digite o título da série: ");
@@ -87,25 +88,24 @@ public class SeriesMenu {
             validInput = true;
         }
 
-        seriesController.addSeries(new Series(title, date, Genre.valueOf(genre)));
+        seriesController.addSeries(new Series(title, date, Genre.values()[genre]));
         System.out.println("Série: " + title + " adicionada com sucesso");
     }
 
-    public String genreOptions(){
+    public int genreOptions(){
         List<String> genreList = Arrays.stream(Genre.values()).map(Genre::getGenreName).toList();
         int genreSize = genreList.size();
 
-        System.out.println("Generos disponíveis");
+        System.out.println("\nGeneros disponíveis");
         for (int i = 0; i < genreSize; i++) {
             System.out.println((i + 1) + " - " + genreList.get(i));
         }
 
         System.out.println("\nSua opção: ");
-        int option = ScanValidation.getValidIntBetweenInput(new Scanner(System.in), 1, genreSize);
-        return genreList.get((option-1));
+        return ScanValidation.getValidIntBetweenInput(new Scanner(System.in), 1, genreSize);
     }
 
-    public void printSeriesDetails() {System.out.println(pickASeries().toString());}
+    public void printSeriesDetails() {System.out.println("\n" + pickASeries().toString());}
 
     public Series pickASeries(){
         System.out.println("Selecione uma série");
@@ -150,7 +150,7 @@ public class SeriesMenu {
                         validInput = true;
                     }
                     case 5 -> {
-                        show();
+                        adminMenu();
                         validInput = true;
                     }
                     default -> System.out.println("Opção inválida, por favor, tente novamente");
@@ -195,8 +195,4 @@ public class SeriesMenu {
         updateDateOption(series);
     }
 
-    public static void main(String[] args) {
-        SeriesMenu s = new SeriesMenu();
-        s.show();
-    }
 }

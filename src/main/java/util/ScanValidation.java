@@ -52,11 +52,18 @@ public class ScanValidation {
         while (true) {
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
-                if(choice >= 1 && choice <= 31 && String.valueOf(choice).length() == 2) {
-                    return choice  + "/";
+                String choiceParsed = String.valueOf(choice);
+
+                if(choice >= 1 && choice <= 9){
+                     choiceParsed = "0" + choice;
+                }
+
+                if(choice >= 1 && choice <= 31 && choiceParsed.length() == 2) {
+                    return choiceParsed  + "/";
                 }
                 else{
-                    System.out.println("Entrada inválida. Digite um dia com exatos " + 2 + " números: ");
+                    System.out.println("Entrada inválida. Digite um dia com exatos " + 2 + " números:" +
+                            String.valueOf(choice).length());
                 }
             }
             else {
@@ -69,8 +76,14 @@ public class ScanValidation {
         while (true) {
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
-                if(choice >= 1 && choice <= 12 && String.valueOf(choice).length() == 2) {
-                    return choice + "/";
+                String choiceParsed = String.valueOf(choice);
+
+                if(choice >= 1 && choice <= 9){
+                    choiceParsed = "0" + choice;
+                }
+
+                if(choice >= 1 && choice <= 12 && choiceParsed.length() == 2) {
+                    return choiceParsed + "/";
                 }
                 else{
                     System.out.println("Entrada inválida. Digite um mês com exatos " + 2 + " números: ");
