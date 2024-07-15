@@ -54,7 +54,7 @@ public class DevflixMenu {
                     if (LoginMenu.currentUser.isAdmin()) {
                         seriesMenu.adminMenu();
                     } else {
-                        seriesMenu.adminMenu();
+                        seriesMenu.clientMenu();
                     }
                 case 3:
                 default:

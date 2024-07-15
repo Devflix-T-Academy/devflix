@@ -61,9 +61,8 @@ public class ScanValidation {
                 if(choice >= 1 && choice <= 31 && choiceParsed.length() == 2) {
                     return choiceParsed  + "/";
                 }
-                else{
-                    System.out.println("Entrada inválida. Digite um dia com exatos " + 2 + " números:" +
-                            String.valueOf(choice).length());
+                else {
+                    System.out.println("Entrada inválida. Digite um dia com exatos " + 2 + " números: ");
                 }
             }
             else {
