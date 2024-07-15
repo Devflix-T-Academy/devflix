@@ -1,6 +1,7 @@
 package view;
 
 import controller.SeriesController;
+import model.Movie;
 import model.Series;
 import model.enums.Genre;
 import util.ScanValidation;
@@ -101,7 +102,26 @@ public class SeriesMenu {
                     clientMenu();
                 }
                 case 3 -> {
-                    // serie assistida e avaliacao
+                    String title;
+
+                    seriesController.printSeries();
+                    DevflixMenu.keyPress();
+                    while (true){
+                        System.out.println("Qual série deseja assistir? Digite S para SAIR!");
+                        title = ScanValidation.getValidStringInput(new Scanner(System.in), 1);
+                        Series series = seriesController.getSeries(title);
+                        if (series != null) {
+                            System.out.println("Assitindo filme: " + series.getTitle());
+                            series.setWatched(series.getWatched() + 1);
+                            RatingMenu.Show(series);
+                            break;
+                        }
+                        if (title.equalsIgnoreCase("S")){
+                            break;
+                        }
+                        System.out.println("Série não encontrada");
+                    }
+                    validInput = true;
                     clientMenu();
                 }
                 case 4 -> {
