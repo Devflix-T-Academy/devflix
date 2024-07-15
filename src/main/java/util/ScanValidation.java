@@ -1,5 +1,7 @@
 package util;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class ScanValidation {
@@ -16,6 +18,25 @@ public class ScanValidation {
         }
     }
 
+
+    public static int getValidIntBetweenInput(Scanner scanner, int min, int max) {
+        while (true) {
+            if (scanner.hasNextInt()) {
+                int choice = scanner.nextInt();
+                if(choice >= min && choice <= max) {
+                    scanner.nextLine();
+                    return choice;
+                }
+                else{
+                    System.out.printf("Entrada inválida. Digite um número entre %d e %d ", min+1, max);
+                }
+            } else {
+                System.out.println("Entrada inválida. Digite um número válido: ");
+                scanner.nextLine();
+            }
+        }
+    }
+
     public static String getValidStringInput(Scanner scanner, int minLength) {
         while (true) {
             String input = scanner.nextLine();
@@ -27,4 +48,54 @@ public class ScanValidation {
         }
     }
 
+    public static String getValidDayInput(Scanner scanner) {
+        while (true) {
+            if (scanner.hasNextInt()) {
+                int choice = scanner.nextInt();
+                if(choice >= 1 && choice <= 31 && String.valueOf(choice).length() == 2) {
+                    return choice  + "/";
+                }
+                else{
+                    System.out.println("Entrada inválida. Digite um dia com exatos " + 2 + " números: ");
+                }
+            }
+            else {
+                System.out.println("Entrada inválida. Digite um número inteiro: ");
+            }
+        }
+    }
+
+    public static String getValidMonthInput(Scanner scanner) {
+        while (true) {
+            if (scanner.hasNextInt()) {
+                int choice = scanner.nextInt();
+                if(choice >= 1 && choice <= 12 && String.valueOf(choice).length() == 2) {
+                    return choice + "/";
+                }
+                else{
+                    System.out.println("Entrada inválida. Digite um mês com exatos " + 2 + " números: ");
+                }
+            }
+            else {
+                System.out.println("Entrada inválida. Digite um número inteiro: ");
+            }
+        }
+    }
+
+    public static String getValidYearInput(Scanner scanner) {
+        while (true) {
+            if (scanner.hasNextInt()) {
+                int choice = scanner.nextInt();
+                if(choice >= 1 && choice <= LocalDate.now().getYear() && String.valueOf(choice).length() == 4) {
+                    return String.valueOf(choice);
+                }
+                else{
+                    System.out.println("Entrada inválida. Digite um ano com exatos " + 4 + " números: ");
+                }
+            }
+            else {
+                System.out.println("Entrada inválida. Digite um número inteiro: ");
+            }
+        }
+    }
 }

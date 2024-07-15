@@ -1,16 +1,16 @@
 package model.enums;
 
 public enum Genre {
-    ACAO("Ação"),
-    COMEDIA("Comédia"),
-    DRAMA("Drama"),
-    TERROR("Terror"),
-    ROMANCE("Romance"),
+    Ação("Ação"),
+    Comédia("Comédia"),
+    Drama("Drama"),
+    Terror("Terror"),
+    Romance("Romance"),
     FICCAO_CIENTIFICA("Ficção Científica"),
-    FANTASIA("Fantasia"),
-    SUSPENSE("Suspense"),
-    DOCUMENTARIO("Documentário"),
-    ANIMACAO("Animação");
+    Fantasia("Fantasia"),
+    Suspense("Suspense"),
+    Documentário("Documentário"),
+    Animação("Animação");
 
     private String genreName;
 

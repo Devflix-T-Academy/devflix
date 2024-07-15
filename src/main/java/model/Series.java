@@ -30,7 +30,7 @@ public class Series extends Media {
 
     @Override
     public String toString() {
-        return "ID - " + (this.getId()) +
+        return "ID - " + this.getId() +
                 "\nTítulo - " + this.getTitle() +
                 "\nData de lançamento - " + this.getDate() +
                 "\nGênero - " + this.getGenre().getGenreName() ;

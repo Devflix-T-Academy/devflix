@@ -38,4 +38,10 @@ public  class Episode {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Título - " + title +
+                "\nResumo - " + preview;
+    }
 }
