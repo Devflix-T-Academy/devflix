@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 public class DevflixMenu {
     public static void mainMenu() {
+        SeriesMenu seriesMenu = new SeriesMenu();
         Scanner scanner = new Scanner(System.in);
 
         int option;
@@ -51,9 +52,9 @@ public class DevflixMenu {
                     }
                 case 2:
                     if (LoginMenu.currentUser.isAdmin()) {
-                        // TODO: menu de séries do Admin
+                        seriesMenu.adminMenu();
                     } else {
-                        // TODO: menu de séries do Cliente
+                        seriesMenu.adminMenu();
                     }
                 case 3:
                 default:

@@ -72,7 +72,7 @@ public class SeasonMenu {
                     }
                 }
                 case 5 -> {
-                    seriesMenu.show();
+                    seriesMenu.adminMenu();
                     validInput = true;
                 }
                 default -> System.out.println("Opção inválida, por favor, tente novamente");
