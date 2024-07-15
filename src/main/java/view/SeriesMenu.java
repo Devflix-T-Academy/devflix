@@ -245,5 +245,4 @@ public class SeriesMenu {
         updateTitleOption(series);
         updateDateOption(series);
     }
-
 }
