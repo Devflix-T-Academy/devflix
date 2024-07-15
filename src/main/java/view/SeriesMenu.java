@@ -3,6 +3,8 @@ package view;
 import controller.SeriesController;
 import model.Series;
 import model.enums.Genre;
+import services.movie.WatchedMovieService;
+import services.series.WatchedSeriesService;
 import util.ScanValidation;
 
 import java.time.LocalDate;
@@ -25,7 +27,8 @@ public class SeriesMenu {
                      2 - Atualizar série
                      3 - Remover série
                      4 - Detalhar série
-                     5 - Voltar ao menu principal
+                     5 - Séries mais assistidas
+                     6 - Voltar ao menu principal
                                 \s
                      Sua opção:
                     \s""");
@@ -65,7 +68,12 @@ public class SeriesMenu {
                         printSeriesDetails();
                     }
                 }
-                case 5 -> {
+                case 5->{
+                    mostWatchedOption();
+                    DevflixMenu.keyPress();
+                    break;
+                }
+                case 6 -> {
                     //método do menu principal
                 }
                 default -> System.out.println("Opção inválida, por favor, tente novamente");
@@ -193,6 +201,10 @@ public class SeriesMenu {
     public void updateSeriesOption(Series series) {
         updateTitleOption(series);
         updateDateOption(series);
+    }
+    private static void mostWatchedOption(){
+        WatchedSeriesService watchedSeries = new WatchedSeriesService(SeriesController.getSeriesList());
+        watchedSeries.showList();
     }
 
     public static void main(String[] args) {

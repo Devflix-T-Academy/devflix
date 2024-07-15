@@ -5,9 +5,9 @@ import java.util.List;
 public interface Watchable<T>{
 
 
-    public void imprimirLista();
+    public void showList();
 
-    public void criarLista(List<T> list);
+    public void createList(List<T> list);
 
 
 

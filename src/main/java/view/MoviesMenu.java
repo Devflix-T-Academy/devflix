@@ -3,6 +3,7 @@ package view;
 import controller.MovieController;
 import model.Movie;
 import model.enums.Genre;
+import services.movie.WatchedMovieService;
 import util.Cores;
 import util.ScanValidation;
 
@@ -31,15 +32,16 @@ public class MoviesMenu {
                             3 - Buscar Filme por Título              
                             4 - Atualizar Filme
                             5 - Remover Filme
-                            6 - Assistir Filme
-                            7 - Sair
+                            6 - Filmes Mais Assistidos
+                            7 - Assistir Filme
+                            8 - Sair
                                                                      
                 *****************************************************
                 Digite sua opção:                                   """ + Cores.TEXT_RESET);
 
             option = ScanValidation.getValidIntInput(scanner);
 
-            if (option == 7) {
+            if (option == 8) {
                 System.out.println(Cores.TEXT_RED_BOLD + "\nDevflix - Seu Gerenciador de Filmes!");
                 DevflixMenu.about();
                 scanner.close();
@@ -68,6 +70,10 @@ public class MoviesMenu {
                     DevflixMenu.keyPress();
                     break;
                 case 6:
+                    mostWatchedOption();
+                    DevflixMenu.keyPress();
+                    break;
+                case 7:
                     watchMovieOption();
                     DevflixMenu.keyPress();
                     break;
@@ -92,16 +98,17 @@ public class MoviesMenu {
                 *****************************************************
                                                                      
                             1 - Listar Todos os Filmes               
-                            2 - Buscar Filme por Título              
-                            3 - Assistir Filme
-                            4 - Sair
+                            2 - Buscar Filme por Título 
+                            3 - Filmes Mais Assistidos             
+                            4 - Assistir Filme
+                            5 - Sair
                                                                      
                 *****************************************************
                 Digite sua opção:                                   """ + Cores.TEXT_RESET);
 
             option = ScanValidation.getValidIntInput(scanner);
 
-            if (option == 4) {
+            if (option == 5) {
                 System.out.println(Cores.TEXT_RED_BOLD + "\nDevflix - Seu Gerenciador de Filmes!");
                 DevflixMenu.about();
                 scanner.close();
@@ -113,14 +120,22 @@ public class MoviesMenu {
                     listMoviesOption();
                     DevflixMenu.keyPress();
                     break;
+
                 case 2:
                     searchMovieOption();
                     DevflixMenu.keyPress();
                     break;
+
                 case 3:
+                    mostWatchedOption();
+                    DevflixMenu.keyPress();
+                    break;
+
+                case 4:
                     watchMovieOption();
                     DevflixMenu.keyPress();
                     break;
+
                 default:
                     System.out.println(Cores.TEXT_RED_BOLD + "\nOpção inválida!\n" + Cores.TEXT_RESET);
                     DevflixMenu.keyPress();
@@ -169,7 +184,7 @@ public class MoviesMenu {
     }
 
     private static void listMoviesOption() {
-        System.out.println(Cores.TEXT_WHITE + "Listar Todos os Filmes\n");
+        System.out.println(Cores.TEXT_WHITE + "Listar Todos os Filmes\n" + Cores.TEXT_RESET);
         movieController.listAllMovies();
     }
 
@@ -247,5 +262,10 @@ public class MoviesMenu {
             }
             System.out.println("Filme não encontrado");
         }
+    }
+
+    private static void mostWatchedOption(){
+        WatchedMovieService watchedMovie = new WatchedMovieService(movieController.listMovies());
+        watchedMovie.showList();
     }
 }

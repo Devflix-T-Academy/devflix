@@ -27,6 +27,6 @@ public enum Rating {
             case THREE_STARS -> "★★★☆☆";
             case FOUR_STARS -> "★★★★☆";
             case FIVE_STARS -> "★★★★★";
-        };
+        } + Cores.TEXT_RESET;
     }
 }
