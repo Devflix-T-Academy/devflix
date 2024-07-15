@@ -251,13 +251,16 @@ public class MoviesMenu {
         movieController.listAllMovies();
         DevflixMenu.keyPress();
         while (true){
-            System.out.println("Qual filme deseja assistir?");
+            System.out.println("Qual filme deseja assistir? Digite S para SAIR!");
             title = ScanValidation.getValidStringInput(scanner, 1);
             Movie movie = movieController.getMovieByTitle(title);
             if (movie != null) {
                 System.out.println("Assitindo filme: " + movie.getTitle());
                 movie.setWatched(movie.getWatched() + 1);
                 RatingMenu.Show(movie);
+                break;
+            }
+            if (title.equalsIgnoreCase("S")){
                 break;
             }
             System.out.println("Filme não encontrado");
