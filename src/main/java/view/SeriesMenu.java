@@ -3,7 +3,6 @@ package view;
 import controller.SeriesController;
 import model.Series;
 import model.enums.Genre;
-import services.movie.WatchedMovieService;
 import services.series.WatchedSeriesService;
 import util.ScanValidation;
 
