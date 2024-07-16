@@ -35,4 +35,11 @@ public class Series extends Media {
                 "\nData de lançamento - " + this.getDate() +
                 "\nGênero - " + this.getGenre().getGenreName() ;
     }
+    @Override
+    public void displayDetails() {
+        System.out.println("Título: " + getTitle());
+        System.out.println("Gênero: " + getGenre());
+        System.out.println("Temporadas: " + seasonList.stream().count());
+        System.out.println("Avaliações: " + getRatings());
+    }
 }

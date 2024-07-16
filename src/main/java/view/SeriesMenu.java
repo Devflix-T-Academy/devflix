@@ -3,6 +3,8 @@ package view;
 import controller.SeriesController;
 import model.Series;
 import model.enums.Genre;
+import services.movie.WatchedMovieService;
+import services.series.WatchedSeriesService;
 import util.ScanValidation;
 
 import java.time.LocalDate;
@@ -25,7 +27,8 @@ public class SeriesMenu {
                      2 - Atualizar série
                      3 - Remover série
                      4 - Detalhar série
-                     5 - Voltar ao menu principal
+                     5 - Séries mais assistidas
+                     6 - Voltar ao menu principal
                                 \s
                      Sua opção:
                     \s""");
@@ -65,7 +68,11 @@ public class SeriesMenu {
                         printSeriesDetails();
                     }
                 }
-                case 5 -> {
+                case 5 ->{
+                    mostWatchedOption();
+                    DevflixMenu.keyPress();
+                }
+                case 6 -> {
                     DevflixMenu.mainMenu();
                     validInput = true;
                 }
@@ -85,7 +92,8 @@ public class SeriesMenu {
                      1 - Listar Todas as séries
                      2 - Buscar Série por Título
                      3 - Assistir Série
-                     4 - Voltar ao menu principal
+                     4 - Séries mais assistidas
+                     5 - Voltar ao menu principal
                                 \s
                      Sua opção:
                     \s""");
@@ -104,7 +112,11 @@ public class SeriesMenu {
                     // serie assistida e avaliacao
                     clientMenu();
                 }
-                case 4 -> {
+                case 4 ->{
+                    mostWatchedOption();
+                    DevflixMenu.keyPress();
+                }
+                case 5 -> {
                     DevflixMenu.mainMenu();
                 }
             }
@@ -244,5 +256,10 @@ public class SeriesMenu {
     public void updateSeriesOption(Series series) {
         updateTitleOption(series);
         updateDateOption(series);
+    }
+
+    private void mostWatchedOption(){
+        WatchedSeriesService watchedSeries = new WatchedSeriesService(SeriesController.getSeriesList());
+        watchedSeries.showList();
     }
 }
